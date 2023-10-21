@@ -41,6 +41,6 @@ public class BookClient {
                 .timeout(Duration.ofSeconds(3), Mono.empty())
                 .onErrorResume(WebClientResponseException.NotFound.class, exception -> Mono.empty()) // If the book is not found, return an empty Mono with a callback
                 .retryWhen(Retry.backoff(3, Duration.ofMillis(100))) // Adding retryWhen after timeout ensures that the retry happens for every timeout
-                .onErrorResume(Exception.class, exception -> Mono.empty());
+                .onErrorResume(Exception.class, exception -> Mono.empty());        // If there is any other exception, return an empty Mono with a callback
     }
 }
