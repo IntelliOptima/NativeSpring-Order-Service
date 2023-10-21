@@ -19,4 +19,3 @@ k8s_yaml(kustomize('./k8s/resources/base'))
 
 # Manage
 k8s_resource('order-service', port_forwards=['7001'])
-```
